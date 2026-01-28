@@ -1,0 +1,11 @@
+# WordPress
+wp-config.php
+node_modules/
+vendor/
+
+# Mac
+.DS_Store
+
+# Build
+dist/
+.cache/
