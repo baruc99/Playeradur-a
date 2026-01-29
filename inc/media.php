@@ -21,64 +21,85 @@ add_filter('wp_get_attachment_image_attributes', function ($attr) {
 });
 
 add_action('add_meta_boxes', function () {
-
     add_meta_box(
         'product_gallery',
         'Galería del producto',
         'playeraduria_render_product_gallery',
         'product_card',
         'normal',
-        'high'
+        'default'
     );
-
 });
+
 
 function playeraduria_render_product_gallery($post) {
 
-    $images = get_post_meta($post->ID, '_product_gallery', true);
+    // Leer galería
+    $images = get_post_meta($post->ID, 'product_gallery', true);
     $images = is_array($images) ? $images : [];
 
+    // Seguridad
     wp_nonce_field('save_product_gallery', 'product_gallery_nonce');
     ?>
 
     <div id="product-gallery-wrapper">
+
         <ul class="product-gallery-list">
             <?php foreach ($images as $img_id): ?>
-                <li>
+                <li data-id="<?= esc_attr($img_id); ?>">
                     <?= wp_get_attachment_image($img_id, 'thumbnail'); ?>
-                    <input type="hidden" name="product_gallery[]" value="<?= esc_attr($img_id); ?>">
+                    <input type="hidden"
+                           name="product_gallery[]"
+                           value="<?= esc_attr($img_id); ?>">
+                    <button type="button" class="remove-image">×</button>
                 </li>
             <?php endforeach; ?>
         </ul>
-    </div>
 
-    <button type="button" class="button" id="add-product-gallery">
-        Agregar imágenes
-    </button>
+        <button type="button" class="button" id="add-product-gallery">
+            Agregar imágenes
+        </button>
+    </div>
 
     <style>
         .product-gallery-list {
             display: flex;
             gap: 10px;
-            margin: 0;
             padding: 0;
+            margin: 10px 0;
+            flex-wrap: wrap;
         }
         .product-gallery-list li {
             list-style: none;
+            position: relative;
+        }
+        .product-gallery-list img {
+            display: block;
+        }
+        .product-gallery-list .remove-image {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 18px;
         }
     </style>
 
     <script>
     jQuery(function($){
+
         let frame;
 
+        // Agregar imágenes
         $('#add-product-gallery').on('click', function(e){
             e.preventDefault();
-
-            if (frame) {
-                frame.open();
-                return;
-            }
 
             frame = wp.media({
                 title: 'Seleccionar imágenes',
@@ -93,10 +114,16 @@ function playeraduria_render_product_gallery($post) {
                     const id  = attachment.id;
                     const url = attachment.attributes.sizes.thumbnail.url;
 
+                    // Evitar duplicados
+                    if ($('.product-gallery-list li[data-id="'+id+'"]').length) {
+                        return;
+                    }
+
                     $('.product-gallery-list').append(
-                        '<li>' +
-                        '<img src="'+url+'">' +
-                        '<input type="hidden" name="product_gallery[]" value="'+id+'">' +
+                        '<li data-id="'+id+'">' +
+                            '<img src="'+url+'">' +
+                            '<input type="hidden" name="product_gallery[]" value="'+id+'">' +
+                            '<button type="button" class="remove-image">×</button>' +
                         '</li>'
                     );
                 });
@@ -104,11 +131,18 @@ function playeraduria_render_product_gallery($post) {
 
             frame.open();
         });
+
+        // Eliminar imagen
+        $(document).on('click', '.remove-image', function(){
+            $(this).closest('li').remove();
+        });
+
     });
     </script>
 
     <?php
 }
+
 
 
 /* =========================
@@ -124,16 +158,17 @@ function playeraduria_render_product_gallery($post) {
 
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
-    if (isset($_POST['product_gallery'])) {
+    if (isset($_POST['product_gallery']) && is_array($_POST['product_gallery'])) {
         update_post_meta(
             $post_id,
-            '_product_gallery',
+            'product_gallery',
             array_map('intval', $_POST['product_gallery'])
         );
     } else {
-        delete_post_meta($post_id, '_product_gallery');
+        delete_post_meta($post_id, 'product_gallery');
     }
 });
+
 
 
 

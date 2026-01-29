@@ -28,19 +28,25 @@ function playeraduria_get_header_data() {
 
 function playeraduria_get_product_images($post_id) {
 
+    // Leer galería correcta
+    $gallery = get_post_meta($post_id, 'product_gallery', true);
+    $gallery = is_array($gallery) ? $gallery : [];
+
     $images = [];
 
-    // Imagen principal
-    if (has_post_thumbnail($post_id)) {
-        $images[] = get_post_thumbnail_id($post_id);
+    // Imagen destacada primero (si existe)
+    $featured = get_post_thumbnail_id($post_id);
+    if ($featured) {
+        $images[] = $featured;
     }
 
-    // Galería desde metabox
-    $gallery = get_post_meta($post_id, '_product_gallery', true);
-
-    if (is_array($gallery)) {
-        $images = array_merge($images, $gallery);
+    // Agregar galería evitando duplicados
+    foreach ($gallery as $img_id) {
+        if (!in_array($img_id, $images)) {
+            $images[] = $img_id;
+        }
     }
 
-    return array_unique($images);
+    return $images;
 }
+

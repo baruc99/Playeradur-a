@@ -27,3 +27,4 @@ $playeraduria_includes = [
 foreach ( $playeraduria_includes as $file ) {
     require_once get_template_directory() . '/' . $file;
 }
+
