@@ -3,7 +3,6 @@
 <main class="container my-5">
 
 <?php
-// Slug de la página actual (onboard, la-moska, etc.)
 $current_section = get_post_field('post_name', get_post());
 ?>
 
@@ -23,9 +22,18 @@ $query = new WP_Query([
 ]);
 
 if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-        get_template_part('template-parts/card', 'product');
-    endwhile;
+    while ($query->have_posts()) : $query->the_post(); ?>
+
+        <div class="col-12 col-md-4">
+
+            <?php
+            get_template_part('template-parts/card', 'product');
+            get_template_part('template-parts/modal', 'product');
+            ?>
+
+        </div>
+
+    <?php endwhile;
     wp_reset_postdata();
 else :
     echo '<p>No hay productos en esta sección.</p>';

@@ -6,7 +6,7 @@ function playeraduria_register_product_card_cpt() {
         'label' => 'Productos',
         'public' => true,
         'menu_icon' => 'dashicons-products',
-        'supports' => ['title', 'thumbnail'],
+        'supports' => ['title','editor','thumbnail','gallery'],
         'has_archive' => false,
         'show_in_rest' => false,
     ]);

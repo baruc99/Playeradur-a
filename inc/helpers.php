@@ -25,3 +25,22 @@ function playeraduria_get_header_data() {
         'subtitle' => 'Lo que imaginas, se imprime',
     ];
 }
+
+function playeraduria_get_product_images($post_id) {
+
+    $images = [];
+
+    // Imagen principal
+    if (has_post_thumbnail($post_id)) {
+        $images[] = get_post_thumbnail_id($post_id);
+    }
+
+    // Galería desde metabox
+    $gallery = get_post_meta($post_id, '_product_gallery', true);
+
+    if (is_array($gallery)) {
+        $images = array_merge($images, $gallery);
+    }
+
+    return array_unique($images);
+}
