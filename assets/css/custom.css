@@ -9,12 +9,21 @@ body {
 /* =========================
    HERO / HEADER
    ========================= */
-.hero {
+/* .hero {
   position: relative;
-  height: 35rem;
+  height: 37.5rem;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+} */
+
+.hero {
+    position: relative;
+    aspect-ratio: 1200 / 630; /* ≈ 1.91 */
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 /* =========================
