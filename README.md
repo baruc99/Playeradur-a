@@ -4,10 +4,10 @@ PLAYERADURÍA – GUÍA DE CONFIGURACIÓN DEL SITIO
 Esta guía explica cómo configurar el sitio Playeraduría
 desde el panel de WordPress, SIN tocar código.
 
-Solo sigue los pasos en orden.
+Sigue los pasos EN ORDEN.
 
 -------------------------------------------------
-1. PRIMER PASO: CREAR LAS SECCIONES (PÁGINAS)
+1. CREAR LAS PÁGINAS DEL SITIO
 -------------------------------------------------
 
 Cada sección del sitio es una PÁGINA.
@@ -26,21 +26,20 @@ Cómo hacerlo:
 - Escribir el nombre
 - Publicar
 
-IMPORTANTE:
-La PRIMERA página debe ser:
-Onboard
-
 -------------------------------------------------
-2. SEGUNDO PASO: CREAR EL MENÚ
+2. CREAR EL MENÚ PRINCIPAL
 -------------------------------------------------
 
-El menú controla el orden de las secciones.
+El menú define el orden de las secciones.
 
-Cómo crear el menú:
+1. Ir a:
+   Apariencia > Menús
 
-1. Ir a: Apariencia > Menús
 2. Crear un menú nuevo
-3. Nombre sugerido: Menú Principal
+
+3. Nombre sugerido:
+   Menú Principal
+
 4. Agregar las páginas en este orden:
 
    1) Onboard
@@ -51,18 +50,19 @@ Cómo crear el menú:
    6) Custom
 
 5. Asignar el menú a:
-   Ubicación: Menú Principal
+   Menú Principal
+
 6. Guardar
 
 -------------------------------------------------
-3. TERCER PASO: CREAR LAS SECCIONES DE PRODUCTOS
+3. CREAR LAS SECCIONES DE PRODUCTOS
 -------------------------------------------------
 
 Las secciones de productos se llaman “Secciones”.
 
-Cómo crearlas:
+1. Ir a:
+   Productos > Secciones
 
-1. Ir a: Productos > Secciones
 2. Crear una sección por cada página:
 
    - Onboard
@@ -76,119 +76,97 @@ IMPORTANTE:
 El nombre debe coincidir con el nombre de la página.
 
 -------------------------------------------------
-4. CUARTO PASO: AGREGAR PRODUCTOS
+4. AGREGAR PRODUCTOS
 -------------------------------------------------
 
-Cada producto es una “playera” o diseño.
+1. Ir a:
+   Productos > Añadir nuevo
 
-Cómo agregar un producto:
-
-1. Ir a: Productos > Añadir nuevo
 2. Escribir el nombre del producto
+
 3. En el panel derecho:
    Seleccionar UNA sola sección
-   (solo una, no varias)
 
 4. Agregar imagen destacada
-   (esta es la imagen principal)
 
-5. Guardar / Publicar
+5. Publicar
 
 -------------------------------------------------
-5. QUINTO PASO: AGREGAR MÁS IMÁGENES (CARRUSEL)
+5. AGREGAR IMÁGENES AL CARRUSEL
 -------------------------------------------------
-
-Cada producto puede tener varias imágenes.
-
-Cómo agregar imágenes al carrusel:
 
 1. Editar un producto
-2. Buscar la sección:
+
+2. Buscar:
    “Galería del producto”
+
 3. Hacer clic en:
    “Agregar imágenes”
-4. Seleccionar una o más imágenes
-5. Guardar el producto
 
-Resultado:
-- La imagen destacada es la primera
-- Las demás se muestran como carrusel
-- Si hay más de una imagen, aparecen flechas
+4. Seleccionar imágenes
+
+5. Guardar
 
 -------------------------------------------------
-6. ZOOM DE IMÁGENES
+6. DEFINIR LA PÁGINA PRINCIPAL (INDEX)
 -------------------------------------------------
 
-Cuando un visitante hace clic en una imagen:
-- Se abre una galería grande
-- Puede navegar entre imágenes
-- No necesitas hacer nada extra
+Una vez creadas todas las páginas,
+elige cuál será la página inicial del sitio.
 
-El zoom funciona automáticamente.
+Para que ONBOARD sea la primera página:
+
+1. Ir a:
+   Ajustes > Lectura
+
+2. En:
+   “Tu página de inicio muestra”
+   Seleccionar:
+   ✔ Una página estática
+
+3. En:
+   Página de inicio
+   Seleccionar:
+   Onboard
+
+4. Guardar cambios
 
 -------------------------------------------------
-7. OPCIONES DEL TEMA (CONFIGURACIÓN GENERAL)
+7. OPCIONES DEL TEMA
 -------------------------------------------------
 
 Ir a:
 Opciones del Tema
 
-Ahí puedes configurar:
-
-- Logo del sitio
+Ahí puedes cambiar:
+- Logo
 - Favicon
-- Descripción del sitio (SEO)
+- Descripción del sitio
 - Imagen para redes sociales
-- Scripts (Analytics, Pixel, etc.)
-- Ajustes de rendimiento
+- Scripts (Analytics, etc.)
 
-Solo guarda los cambios.
+Guardar cambios.
 
 -------------------------------------------------
-8. PROBLEMAS COMUNES Y SOLUCIÓN
+8. PROBLEMAS COMUNES
 -------------------------------------------------
 
-Problema:
-Aparecen productos en todas las secciones
+Aparecen productos en todas las secciones:
+→ El producto tiene varias secciones asignadas
 
-Solución:
-El producto tiene marcadas varias secciones.
-Edita el producto y deja solo UNA.
+No aparece un producto:
+→ El producto no tiene sección asignada
 
----------------------------------------------
-
-Problema:
-No aparece un producto
-
-Solución:
-El producto no tiene sección asignada.
-
----------------------------------------------
-
-Problema:
-No hay carrusel
-
-Solución:
-El producto solo tiene una imagen.
-
----------------------------------------------
-
-Problema:
-El zoom no abre
-
-Solución:
-No es un error del usuario.
-Contactar al desarrollador.
+No hay carrusel:
+→ El producto solo tiene una imagen
 
 -------------------------------------------------
 9. REGLAS IMPORTANTES
 -------------------------------------------------
 
 - Cada producto pertenece a UNA sección
-- Onboard siempre va primero
 - El orden del menú define el orden del sitio
 - No borrar páginas sin avisar
-- No marcar varias secciones en un producto
 
 -------------------------------------------------
 FIN DE LA GUÍA
