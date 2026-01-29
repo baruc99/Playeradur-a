@@ -1,0 +1,236 @@
+/* =========================
+   GLOBAL
+   ========================= */
+body {
+  background: #f9f9f9;
+  margin: 0;
+}
+
+/* =========================
+   HERO / HEADER
+   ========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 37.5rem;               /* DESKTOP */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================
+   MENÚ DE SECCIONES
+   ========================= */
+.section-nav {
+  background: rgba(217, 217, 217, 0.8);
+  height: 6.25rem;               /* 100px */
+  display: flex;
+  align-items: center;
+  margin: 0;                     /* 👈 pegado al hero */
+}
+
+.section-menu {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0 2rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.section-menu li a {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  color: #06090c;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 14px;
+  display: inline-block;
+}
+
+/* Subrayado activo */
+.section-menu .current-menu-item a::after,
+.section-menu .current_page_item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6px;
+  background: #ac7f5e;
+}
+
+/* =========================
+   PRODUCT GRID
+   ========================= */
+.product-card {
+  background: #f5f2e5;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  margin-bottom: 4rem;
+}
+
+/* =========================
+   FOOTER + SCROLL TOP
+   ========================= */
+.footer-spacer {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-top {
+  width: 70px;
+  height: 70px;
+  background: #f5f2e5;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.scroll-top:hover {
+  transform: translateY(-4px);
+}
+
+.scroll-top svg {
+  display: block;
+}
+
+.site-footer {
+  background: #262626;
+  height: 45px;
+}
+
+/* ---------- DESKTOP CHICO (993px – 1199px) ---------- */
+@media (max-width: 1199px) and (min-width: 993px) {
+
+  .section-menu {
+    justify-content: center;     /* 👈 no space-evenly */
+    gap: 2rem;                  /* 👈 espacio controlado */
+    flex-wrap: nowrap;          /* 👈 una sola fila */
+  }
+
+  .section-menu li {
+    white-space: nowrap;        /* 👈 NO romper palabras */
+  }
+
+  .section-menu li a {
+    font-size: 30px;            /* 👈 ligero ajuste */
+  }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+/* ---------- TABLET (≤ 992px) ---------- */
+@media (max-width: 992px) {
+
+  .hero {
+    height: 28rem;               /* 👈 sin padding */
+    background-size: contain;    /* NO se recorta */
+    background-position: center;
+    background-color: #f9f9f9;
+  }
+
+  .section-menu {
+    flex-wrap: wrap;                 
+    justify-content: center;         
+    row-gap: 0.75rem;
+    column-gap: 2rem;
+  }
+
+  .section-menu li {
+    white-space: nowrap;              /* 👈 NO romper palabras */
+  }
+
+  .section-menu li a {
+    font-size: 28px;
+    padding-bottom: 10px;
+  }
+
+  .section-nav {
+    height: auto;
+    padding: 1rem 0;
+  }
+}
+
+/* ---------- MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+  .hero {
+    height: 13rem;
+    background-size: contain;
+    background-position: top center;
+  }
+
+  .section-menu {
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .section-menu li a {
+    font-size: 22px;
+    padding-bottom: 8px;
+  }
+
+  .section-menu .current-menu-item a::after,
+  .section-menu .current_page_item a::after {
+    height: 4px;
+  }
+
+  .product-card {
+    padding: 1.25rem;
+  }
+
+  .footer-spacer {
+    height: 100px;
+  }
+}
+
+/* ---------- MOBILE PEQUEÑO (≤ 480px) ---------- */
+@media (max-width: 480px) {
+
+  .hero {
+    height: 10rem;
+    background-size: contain;
+  }
+
+  .section-menu li a {
+    font-size: 18px;
+  }
+
+  .scroll-top {
+    width: 56px;
+    height: 56px;
+  }
+
+  .scroll-top svg {
+    width: 32px;
+    height: auto;
+  }
+
+  .site-footer {
+    height: 40px;
+  }
+}
