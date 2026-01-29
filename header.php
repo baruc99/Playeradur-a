@@ -14,13 +14,13 @@
     style="background-image:url('<?php echo esc_url($header['image']); ?>')">
 </header>
 
-<nav class="main-nav">
+<nav class="section-nav">
     <div class="container">
         <?php
         wp_nav_menu([
             'theme_location' => 'main_menu',
             'container' => false,
-            'menu_class' => 'menu d-flex gap-4',
+            'menu_class' => 'section-menu',
         ]);
         ?>
     </div>
