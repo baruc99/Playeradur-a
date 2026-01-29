@@ -1,6 +1,7 @@
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
 
-    $('.playeraduria-tabs-nav a').on('click', function () {
+    $('.playeraduria-tabs-nav a').on('click', function (e) {
+        e.preventDefault();
 
         const tab = $(this).data('tab');
 
