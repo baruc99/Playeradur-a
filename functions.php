@@ -10,8 +10,10 @@ $playeraduria_includes = [
     'inc/supports.php',
     'inc/helpers.php',
     'inc/cpt/routes.php',
+    'inc/cpt/product-card.php',
     'inc/media.php',
     'inc/taxonomies/routes-taxonomy.php',
+    'inc/taxonomies/section.php',
 ];
 
 foreach ( $playeraduria_includes as $file ) {
