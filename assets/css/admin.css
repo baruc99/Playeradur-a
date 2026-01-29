@@ -1,0 +1,27 @@
+.playeraduria-tabs-nav {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid #ccd0d4;
+  margin-bottom: 20px;
+}
+
+.playeraduria-tabs-nav a {
+  cursor: pointer;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #1d2327;
+}
+
+.playeraduria-tabs-nav a.active {
+  border-bottom: 3px solid #2271b1;
+  color: #2271b1;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}

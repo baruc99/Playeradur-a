@@ -14,6 +14,14 @@ $playeraduria_includes = [
     'inc/media.php',
     'inc/taxonomies/routes-taxonomy.php',
     'inc/taxonomies/section.php',
+
+    // admin
+    'inc/admin/theme-options-helpers.php',
+    'inc/admin/theme-options-page.php',
+    'inc/admin/theme-options-fields.php',
+    'inc/admin/theme-options-render.php', 
+    'inc/admin/theme-options-frontend.php',
+    'inc/admin/theme-options-title.php',
 ];
 
 foreach ( $playeraduria_includes as $file ) {
