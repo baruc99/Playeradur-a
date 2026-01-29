@@ -13,6 +13,14 @@ function playeraduria_enqueue_assets() {
         ['bootstrap-css']
     );
 
+    // custom.css 👈 ESTE ES EL IMPORTANTE
+    wp_enqueue_style(
+        'playeraduria-custom',
+        get_template_directory_uri() . '/assets/css/custom.css',
+        ['playeraduria-style'], // dependencia correcta
+        filemtime(get_template_directory() . '/assets/css/custom.css')
+    );
+
     wp_enqueue_script('jquery');
 
     wp_enqueue_script(

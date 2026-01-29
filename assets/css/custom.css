@@ -1,0 +1,8 @@
+.hero {
+    position: relative;
+    min-height: 420px;
+    height: 45rem;              /* altura exacta */
+    background-repeat: no-repeat;
+    background-size: cover;     /* se expande sin deformarse */
+    background-position: center;
+}
