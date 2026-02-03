@@ -1,11 +1,69 @@
-# WordPress
-wp-config.php
+# =========================
+# Sistema operativo
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# Dependencias
+# =========================
 node_modules/
 vendor/
 
-# Mac
-.DS_Store
-
-# Build
+# =========================
+# Builds / compilados
+# =========================
 dist/
+build/
 .cache/
+.tmp/
+
+# =========================
+# Logs
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# =========================
+# WordPress (tema)
+# =========================
+# Uploads nunca van en el tema
+uploads/
+
+# Configuración local
+.env
+.env.*
+wp-config.php
+
+# =========================
+# Archivos temporales
+# =========================
+*.bak
+*.swp
+*.tmp
+
+# =========================
+# Coverage / testing
+# =========================
+coverage/
+
+# =========================
+# Composer (si usas)
+# =========================
+composer.lock
+
+# =========================
+# Git
+# =========================
+.git/
+.gitignore
