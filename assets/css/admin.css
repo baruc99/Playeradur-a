@@ -25,3 +25,15 @@
 .tab-panel.active {
     display: block;
 }
+
+.playeraduria-media-preview {
+    margin-top: 10px;
+}
+
+.playeraduria-media-preview img {
+    display: block;
+    border: 1px solid #ddd;
+    padding: 4px;
+    background: #fff;
+}
+

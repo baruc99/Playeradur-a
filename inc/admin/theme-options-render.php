@@ -12,12 +12,39 @@ function playeraduria_render_logo_alt() { ?>
         value="<?= esc_url(playeraduria_get_option('logo_alt')); ?>">
 <?php }
 
-function playeraduria_render_favicon() { ?>
-    <input type="text" id="playeraduria_favicon" class="regular-text"
-        name="playeraduria_theme_options[favicon]"
-        value="<?= esc_url(playeraduria_get_option('favicon')); ?>">
-    <button class="button playeraduria-upload" data-target="#playeraduria_favicon">Subir</button>
-<?php }
+function playeraduria_render_favicon() {
+
+    $favicon = esc_url(playeraduria_get_option('favicon'));
+    ?>
+
+    <div class="playeraduria-media-field">
+
+        <input type="text"
+            id="playeraduria_favicon"
+            class="regular-text"
+            name="playeraduria_theme_options[favicon]"
+            value="<?= $favicon; ?>">
+
+        <button type="button"
+                class="button playeraduria-upload"
+                data-target="#playeraduria_favicon">
+            Subir
+        </button>
+
+        <?php if ($favicon): ?>
+            <div class="playeraduria-media-preview" style="margin-top:10px;">
+                <strong>Vista previa:</strong><br>
+                <img src="<?= $favicon; ?>"
+                    alt="Favicon preview"
+                    style="width:48px;height:48px;border:1px solid #ccc;padding:4px;background:#fff;">
+            </div>
+        <?php endif; ?>
+
+    </div>
+
+    <?php
+}
+
 
 function playeraduria_render_seo_title() { ?>
     <input type="text" class="regular-text"
