@@ -52,3 +52,37 @@ add_action('wp_ajax_playeraduria_save_product_video', function () {
     wp_send_json_success();
 });
 
+add_action('template_redirect', function () {
+
+    if (!playeraduria_get_option('full_cache')) return;
+
+    if (is_admin()) return;
+
+    if (is_user_logged_in()) return;
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') return;
+
+    $ttl = intval(playeraduria_get_option('full_cache_ttl', 5)) * 60;
+
+    $key = 'playeraduria_page_' . md5($_SERVER['REQUEST_URI']);
+
+    $cached = get_transient($key);
+
+    if ($cached !== false) {
+        header('X-PlayerAduria-Cache: HIT');
+        echo $cached;
+        exit;
+    }
+    
+
+    ob_start(function ($html) use ($key, $ttl) {
+
+        header('X-PlayerAduria-Cache: MISS');
+    
+        set_transient($key, $html, $ttl);
+    
+        return $html;
+    });
+
+});
+

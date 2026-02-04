@@ -108,3 +108,20 @@ function playeraduria_render_disable_emojis() { ?>
         name="playeraduria_theme_options[disable_emojis]"
         value="1" <?= checked(playeraduria_get_option('disable_emojis'), 1, false); ?>> Activar</label>
 <?php }
+
+function playeraduria_render_full_cache() { ?>
+    <label>
+        <input type="checkbox"
+            name="playeraduria_theme_options[full_cache]"
+            value="1" <?= checked(playeraduria_get_option('full_cache'), 1, false); ?>>
+        Activar
+    </label>
+<?php }
+
+function playeraduria_render_full_cache_ttl() { ?>
+    <input type="number" min="1"
+        name="playeraduria_theme_options[full_cache_ttl]"
+        value="<?= esc_attr(playeraduria_get_option('full_cache_ttl', 5)); ?>">
+    <p class="description">Tiempo en minutos</p>
+<?php }
+

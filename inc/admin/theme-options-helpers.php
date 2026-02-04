@@ -6,3 +6,10 @@ if (!function_exists('playeraduria_get_option')) {
         return $options[$key] ?? $default;
     }
 }
+
+add_action('save_post', function () {
+
+    global $wpdb;
+
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_playeraduria_page_%'");
+});

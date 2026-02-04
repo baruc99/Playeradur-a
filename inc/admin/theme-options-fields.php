@@ -35,4 +35,20 @@ add_action('admin_init', function () {
     add_settings_section('playeraduria_performance_section', 'Performance', '__return_false', 'playeraduria-theme-options-performance');
     add_settings_field('preload_hero', 'Preload Hero', 'playeraduria_render_preload_hero', 'playeraduria-theme-options-performance', 'playeraduria_performance_section');
     add_settings_field('disable_emojis', 'Desactivar Emojis', 'playeraduria_render_disable_emojis', 'playeraduria-theme-options-performance', 'playeraduria_performance_section');
+    add_settings_field(
+        'full_cache',
+        'Activar cache del sitio',
+        'playeraduria_render_full_cache',
+        'playeraduria-theme-options-performance',
+        'playeraduria_performance_section'
+    );
+
+    add_settings_field(
+        'full_cache_ttl',
+        'Tiempo de cache (segundos)',
+        'playeraduria_render_full_cache_ttl',
+        'playeraduria-theme-options-performance',
+        'playeraduria_performance_section'
+    );
+
 });
