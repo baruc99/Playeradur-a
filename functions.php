@@ -28,3 +28,27 @@ foreach ( $playeraduria_includes as $file ) {
     require_once get_template_directory() . '/' . $file;
 }
 
+add_filter('use_block_editor_for_post_type', function ($use, $post_type) {
+
+    if ($post_type === 'product_card') {
+        return false;
+    }
+
+    return $use;
+
+}, 10, 2);
+
+add_action('wp_ajax_playeraduria_save_product_video', function () {
+
+    if (!current_user_can('edit_posts')) wp_send_json_error();
+
+    $post_id = intval($_POST['post_id']);
+    $video_id = intval($_POST['video_id']);
+
+    if (!$post_id || !$video_id) wp_send_json_error();
+
+    update_post_meta($post_id, '_product_video', $video_id);
+
+    wp_send_json_success();
+});
+

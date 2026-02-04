@@ -143,8 +143,6 @@ function playeraduria_render_product_gallery($post) {
     <?php
 }
 
-
-
 /* =========================
  * GUARDAR GALERÍA
  * ========================= */
@@ -168,6 +166,96 @@ function playeraduria_render_product_gallery($post) {
         delete_post_meta($post_id, 'product_gallery');
     }
 });
+
+/* =========================
+ * Agregar video de producto
+ * ========================= */
+
+
+add_action('add_meta_boxes', function () {
+
+    add_meta_box(
+        'product_video',
+        'Video del producto',
+        'playeraduria_render_product_video',
+        'product_card',
+        'normal',
+        'default'
+    );
+
+});
+
+function playeraduria_render_product_video($post) {
+
+    wp_nonce_field('playeraduria_video_nonce', 'playeraduria_video_nonce');
+
+    $video_url = get_post_meta($post->ID, '_product_video_url', true);
+?>
+
+<div id="product-video-wrapper">
+
+<?php if ($video_url): ?>
+
+<video controls style="width:100%;max-width:400px;margin-bottom:10px">
+    <source src="<?= esc_url($video_url); ?>">
+</video>
+
+<?php endif; ?>
+
+<label><strong>URL externa o video subido</strong></label>
+
+<input
+    type="text"
+    id="product_video_url"
+    name="product_video_url"
+    value="<?= esc_attr($video_url); ?>"
+    style="width:100%;margin:6px 0 10px"
+    placeholder="https://...">
+
+<p>
+<button type="button" class="button" id="upload_product_video">
+    Subir / seleccionar video
+</button>
+
+<button type="button" class="button" id="remove_product_video">
+    Quitar
+</button>
+</p>
+
+</div>
+
+<?php
+}
+
+
+
+
+
+/* =========================
+ * GUARDAR video de producto
+ * ========================= */
+
+add_action('save_post_product_card', function ($post_id) {
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    if (
+        !isset($_POST['playeraduria_video_nonce']) ||
+        !wp_verify_nonce($_POST['playeraduria_video_nonce'], 'playeraduria_video_nonce')
+    ) return;
+
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    update_post_meta(
+        $post_id,
+        '_product_video_url',
+        esc_url_raw($_POST['product_video_url'] ?? '')
+    );
+
+});
+
+
+
 
 
 

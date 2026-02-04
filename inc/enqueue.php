@@ -59,3 +59,20 @@ function playeraduria_enqueue_assets() {
 }
 
 add_action('wp_enqueue_scripts', 'playeraduria_enqueue_assets');
+
+add_action('admin_enqueue_scripts', function ($hook) {
+
+    // Solo en editar / crear producto
+    if ($hook !== 'post.php' && $hook !== 'post-new.php') return;
+
+    wp_enqueue_media();
+
+    wp_enqueue_script(
+        'playeraduria-product-video',
+        get_template_directory_uri() . '/assets/js/product-video.js',
+        ['jquery'],
+        filemtime(get_template_directory() . '/assets/js/product-video.js'),
+        true
+    );
+
+});
