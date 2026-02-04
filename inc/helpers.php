@@ -20,7 +20,7 @@ function playeraduria_get_header_data() {
 
     // Home o fallback
     return [
-        'image' => get_template_directory_uri() . '/assets/img/header-default.jpg',
+        'image' => get_template_directory_uri() . '/assets/img/header-default.jpeg',
         'title' => 'Playeraduría',
         'subtitle' => 'Lo que imaginas, se imprime',
     ];
