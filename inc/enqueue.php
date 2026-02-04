@@ -69,9 +69,9 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
     wp_enqueue_script(
         'playeraduria-product-video',
-        get_template_directory_uri() . '/assets/js/product-video.js',
+        get_template_directory_uri() . '/assets/js/admin/product-video.js',
         ['jquery'],
-        filemtime(get_template_directory() . '/assets/js/product-video.js'),
+        filemtime(get_template_directory() . '/assets/js/admin/product-video.js'),
         true
     );
 

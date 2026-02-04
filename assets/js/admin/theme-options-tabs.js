@@ -1,5 +1,8 @@
 jQuery(function ($) {
 
+    console.log('Theme options tabs script loaded');
+    
+
     $('.playeraduria-tabs-nav a').on('click', function (e) {
         e.preventDefault();
 

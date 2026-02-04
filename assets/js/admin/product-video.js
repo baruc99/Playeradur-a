@@ -1,6 +1,6 @@
 jQuery(function ($) {
 
-    console.log('Product video media script loaded');
+    console.log('Product video media script loaded xd');
 
     let frame;
 

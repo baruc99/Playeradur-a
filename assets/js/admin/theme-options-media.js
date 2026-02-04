@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
 
+    console.log('Theme options media script loaded');
+    
     $('.playeraduria-upload').on('click', function (e) {
         e.preventDefault();
 

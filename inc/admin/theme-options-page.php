@@ -76,7 +76,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
     wp_enqueue_script(
         'playeraduria-admin-tabs',
-        get_template_directory_uri() . '/inc/admin/theme-options-tabs.js',
+        get_template_directory_uri() . '/assets/js/admin/theme-options-tabs.js',
         ['jquery'],
         null,
         true
@@ -84,7 +84,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
     wp_enqueue_script(
         'playeraduria-admin-media',
-        get_template_directory_uri() . '/inc/admin/theme-options-media.js',
+        get_template_directory_uri() . '/assets/js/admin/theme-options-media.js',
         ['jquery'],
         null,
         true
