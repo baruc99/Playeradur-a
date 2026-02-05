@@ -7,6 +7,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="page-wrapper">
 
 <?php $header = playeraduria_get_header_data(); ?>
 
@@ -25,3 +26,4 @@
         ?>
     </div>
 </nav>
+

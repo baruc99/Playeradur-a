@@ -18,6 +18,29 @@ body {
   background-position: center;
 }
 
+#page-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-inner {
+  will-change: transform;
+  transition: transform .7s cubic-bezier(.77,0,.175,1);
+}
+
+.page-slide-out {
+  transform: translateX(-100%);
+}
+
+.page-slide-in {
+  transform: translateX(100%);
+}
+
+.page-slide-active {
+  transform: translateX(0);
+}
+
+
 /* =========================
    MENÚ DE SECCIONES
    ========================= */
