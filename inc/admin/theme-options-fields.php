@@ -45,7 +45,7 @@ add_action('admin_init', function () {
 
     add_settings_field(
         'full_cache_ttl',
-        'Tiempo de cache (segundos)',
+        'Tiempo de cache (minutos)',
         'playeraduria_render_full_cache_ttl',
         'playeraduria-theme-options-performance',
         'playeraduria_performance_section'

@@ -86,3 +86,120 @@ add_action('template_redirect', function () {
 
 });
 
+/**
+ * ==========================================
+ * WHATSAPP USER META
+ * ==========================================
+ */
+
+ class WP_User_WhatsApp {
+
+    private static $meta_key = 'whatsapp';
+
+    public static function init() {
+
+        // Columnas admin
+        add_filter('manage_users_columns', [self::class, 'add_column']);
+        add_filter('manage_users_custom_column', [self::class, 'render_column'], 10, 3);
+        add_filter('manage_users_sortable_columns', [self::class, 'sortable_column']);
+
+        // Campo en perfil
+        add_action('show_user_profile', [self::class, 'render_field']);
+        add_action('edit_user_profile', [self::class, 'render_field']);
+        add_action('user_new_form', [self::class, 'render_field']);
+
+        // Guardado
+        add_action('personal_options_update', [self::class, 'save_field']);
+        add_action('edit_user_profile_update', [self::class, 'save_field']);
+        add_action('user_register', [self::class, 'save_field']);
+    }
+
+    /**
+     * ======================
+     * ADMIN COLUMN
+     * ======================
+     */
+
+    public static function add_column($columns) {
+        $columns[self::$meta_key] = 'WhatsApp';
+        return $columns;
+    }
+
+    public static function render_column($value, $column_name, $user_id) {
+
+        if ($column_name !== self::$meta_key) {
+            return $value;
+        }
+
+        $whatsapp = get_user_meta($user_id, self::$meta_key, true);
+
+        if (!$whatsapp) {
+            return '—';
+        }
+
+        $link = self::generate_link($whatsapp);
+
+        return '<a href="'.$link.'" target="_blank">'.$whatsapp.'</a>';
+    }
+
+    public static function sortable_column($columns) {
+        $columns[self::$meta_key] = self::$meta_key;
+        return $columns;
+    }
+
+    /**
+     * ======================
+     * PROFILE FIELD
+     * ======================
+     */
+
+    public static function render_field($user = null) {
+
+        $whatsapp = $user ? get_user_meta($user->ID, self::$meta_key, true) : '';
+
+        ?>
+        <h3>Información adicional</h3>
+        <table class="form-table">
+            <tr>
+                <th><label for="whatsapp">WhatsApp</label></th>
+                <td>
+                    <input type="text"
+                        name="whatsapp"
+                        id="whatsapp"
+                        value="<?php echo esc_attr($whatsapp); ?>"
+                        class="regular-text" />
+                    <p class="description">Formato: 5212281234567</p>
+                </td>
+            </tr>
+        </table>
+        <?php
+    }
+
+    public static function save_field($user_id) {
+
+        if (!isset($_POST['whatsapp'])) {
+            return;
+        }
+
+        $numero = sanitize_text_field($_POST['whatsapp']);
+
+        update_user_meta($user_id, self::$meta_key, $numero);
+    }
+
+    /**
+     * ======================
+     * LINK GENERATOR
+     * ======================
+     */
+
+    private static function generate_link($whatsapp) {
+
+        $sitio = home_url();
+    
+        $mensaje = "Hola, te contacto desde ".$sitio;
+    
+        return "https://wa.me/".$whatsapp."?text=".urlencode($mensaje);
+    }
+}
+
+WP_User_WhatsApp::init();
